@@ -1,0 +1,3 @@
+Run `sudo lsof -i tcp:4000` in terminal
+Copy PID
+Run `kill <PID>`
