@@ -1,8 +1,6 @@
 // Code in here should be code that gets/saves/creates dogs in the database
 const db = require('./db');
 
-// Create dog sample SQL
-// INSERT INTO `grad_project`.`dog` (`name`, `breed`, `gender`, `age`, `weight`) VALUES ('max', 'lab', 'male', 7, 100);
 
 const createADog = (dog) => {
   const { name, breed, gender, age, weight } = dog;
@@ -19,7 +17,6 @@ const createADog = (dog) => {
     }); 
   });
 };
-
 
 const getAllDogs = () => {
   return new Promise((resolve, reject) => {

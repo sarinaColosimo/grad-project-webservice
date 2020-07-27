@@ -5,8 +5,6 @@ const dogsService = require('../service/dogs');
 const router = express.Router();
 
 
-
-
 router.get('/dogs', function (req, res) {
   dogsService.getAllDogs()
     .then((result) => {
