@@ -6,7 +6,7 @@ const db = require('./db');
 
 const createAReview = (review) => {
   const { reservation_id, dog_id, review_text } = review;
-  var sql = `INSERT INTO review(reservation_id, dog_id, text) VALUES ('${reservation_id}', '${dog_id}', '${review_text}')`
+  var sql = `INSERT INTO review (reservation_id, dog_id, review_text) VALUES ('${reservation_id}', '${dog_id}', '${review_text}')`
   return new Promise((resolve, reject) => {
     db.query(sql, function(err, result) {
       if (err) {

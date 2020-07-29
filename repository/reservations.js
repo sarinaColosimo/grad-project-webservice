@@ -5,8 +5,8 @@ const db = require('./db');
 //INSERT INTO `grad_project`.`reservation` (`id`, `date`, `status`, `dog_id`, `user_id`, `review_id`) VALUES ('1', '9/1/2020', 'Approved', '1', '2', '3');
 
 const createAReservation = (reservation) => {
-  const { date, status, dogID, userID, reviewID } = reservation;
-  var sql = `INSERT INTO reservation(date, status, dog_id, user_id, review_id) VALUES ('${date}', '${status}', '${dogID}', '${userID}', '${reviewID}')`
+  const { date, status, dog_id, user_id } = reservation;
+  var sql = `INSERT INTO reservation (date, status, dog_id, user_id) VALUES ('${date}', '${status}', '${dog_id}', '${user_id}')`
   return new Promise((resolve, reject) => {
     db.query(sql, function(err, result) {
       if (err) {
