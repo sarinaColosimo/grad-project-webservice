@@ -2,14 +2,15 @@
 const db = require('./db');
 
 
-//INSERT INTO `grad_project`.`review` (`id`, `date`, `status`, `dog_id`, `user_id`, `review_id`) VALUES ('1', '9/1/2020', 'Approved', '1', '2', '3');
+//INSERT INTO `grad_project`.`review` (`reservation_id`, `text`) VALUES ('1', 'Great Dog!');
 
 const createAReview = (review) => {
-  const { date, status, dog_id, user_id, review_id } = review;
-  var sql = `INSERT INTO review(date, status, dog_id, user_id, review_id) VALUES ('${date}', '${status}', '${dog_id}', '${user_id}', '${review_id}')`
+  const { reservation_id, dog_id, review_text } = review;
+  var sql = `INSERT INTO review(reservation_id, dog_id, text) VALUES ('${reservation_id}', '${dog_id}', '${review_text}')`
   return new Promise((resolve, reject) => {
     db.query(sql, function(err, result) {
       if (err) {
+        console.log(err);
         reject({ reason: 'UNKNOWN'});
       } else {
         console.log(result)

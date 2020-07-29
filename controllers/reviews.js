@@ -1,11 +1,11 @@
 // Code in here does only HTTP logic for reviews; i.e defining endpoints and getting data out of the HTTP request
 
 const express = require('express');
-const reservationsService = require('../service/reviews');
+const reviewsService = require('../service/reviews')
 const router = express.Router();
 
 router.get('/reviews', function (req, res) {
-  reservationsService.getAllReviews()
+  reviewsService.getAllReviews()
     .then((result) => {
       res.send(result);
     })
@@ -15,7 +15,7 @@ router.get('/reviews', function (req, res) {
 });
 
 router.get('/reviews/:id', function (req, res) {
-  reservationsService.getAReviewsById(req.params.id)
+  reviewsService.getReviewById(req.params.id)
     .then((reviews) => {
       res.send(reviews);
     })
@@ -29,11 +29,12 @@ router.get('/reviews/:id', function (req, res) {
 });
 
 router.post('/reviews', function (req, res) {
-  reviewsService.createReservation(req.body)
+  reviewsService.createReview(req.body)
     .then((newReview) => {
       res.status(201).send(newReview);
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(500).send('Unknown error');
     });
 });

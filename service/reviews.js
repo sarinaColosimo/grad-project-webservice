@@ -11,8 +11,8 @@ const getAllReviews = () => {
     });
 }
 
-const getAReviewById = (id) => {
-  return reviewsRepository.getAReviewById(id);
+const getReviewById = (id) => {
+  return reviewsRepository.getReviewById(id);
 };
 
 const createReview = (review) => {
@@ -21,7 +21,7 @@ const createReview = (review) => {
 
 const service = {
   getAllReviews,
-  getAReviewById,
+  getReviewById,
   createReview,
 };
 
