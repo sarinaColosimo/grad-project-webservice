@@ -4,8 +4,8 @@ const express = require('express');
 const reviewsService = require('../service/reviews')
 const router = express.Router();
 
-router.get('/reviews', function (req, res) {
-  reviewsService.getAllReviews()
+router.get('/users/:userId/reviews', function (req, res) {
+  reviewsService.getAllReviews(req.params.userId)
     .then((result) => {
       res.send(result);
     })
@@ -14,7 +14,7 @@ router.get('/reviews', function (req, res) {
     });
 });
 
-router.get('/reviews/:id', function (req, res) {
+router.get('users/:userId/reviews/:id', function (req, res) {
   reviewsService.getReviewById(req.params.id)
     .then((reviews) => {
       res.send(reviews);
@@ -28,8 +28,9 @@ router.get('/reviews/:id', function (req, res) {
     });
 });
 
-router.post('/reviews', function (req, res) {
-  reviewsService.createReview(req.body)
+router.post('/reservations/:reservationId/reviews', function (req, res) {
+  const review = { ...req.body, reservation_id: req.params.reservationId };
+  reviewsService.createReview(review)
     .then((newReview) => {
       res.status(201).send(newReview);
     })

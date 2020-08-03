@@ -21,9 +21,9 @@ const createAReview = (review) => {
   });
 };
 
-const getAllReviews = () => {
+const getAllReviews = (userId) => {
   return new Promise((resolve, reject) => {
-    db.query('SELECT * FROM review', function (error, results) {
+    db.query(`SELECT * FROM reservation JOIN review ON reservation.id = review.reservation_id WHERE reservation.user_id='${userId}'`, function (error, results) {
       if (error) {
         reject(error);
       } else {

@@ -1,8 +1,8 @@
 // Code in here contains any logic for operations on reservations; i.e get a reservation, create a reservation
 const reservationsRepository = require('../repository/reservations');
 
-const getAllReservations = () => {
-  return reservationsRepository.getAllReservations()
+const getAllReservations = (userId) => {
+  return reservationsRepository.getAllReservations(userId)
     .then((reservations) => {
       return reservations;
     })

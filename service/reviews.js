@@ -1,8 +1,8 @@
 // Code in here contains any logic for operations on dogs; i.e getting dogs, get a dog, create a dog
 const reviewsRepository = require('../repository/reviews');
 
-const getAllReviews = () => {
-  return reviewsRepository.getAllReviews()
+const getAllReviews = (userId) => {
+  return reviewsRepository.getAllReviews(userId)
     .then((reviews) => {
       return reviews;
     })

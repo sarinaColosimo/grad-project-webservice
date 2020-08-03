@@ -4,8 +4,8 @@ const express = require('express');
 const reservationsService = require('../service/reservations');
 const router = express.Router();
 
-router.get('/reservations', function (req, res) {
-  reservationsService.getAllReservations()
+router.get('/users/:userId/reservations', function (req, res) {
+  reservationsService.getAllReservations(req.params.userId)
     .then((result) => {
       res.send(result);
     })
@@ -15,7 +15,7 @@ router.get('/reservations', function (req, res) {
 });
 
 router.get('/reservations/:id', function (req, res) {
-  reservationsService.getAReservationById(req.params.id)
+  reservationsService.getAReservationById(req.params.id, req.params.id)
     .then((reservation) => {
       res.send(reservation);
     })

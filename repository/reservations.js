@@ -10,6 +10,7 @@ const createAReservation = (reservation) => {
   return new Promise((resolve, reject) => {
     db.query(sql, function(err, result) {
       if (err) {
+        console.log(err);
         reject({ reason: 'UNKNOWN'});
       } else {
         console.log(result)
@@ -20,9 +21,9 @@ const createAReservation = (reservation) => {
   });
 };
 
-const getAllReservations = () => {
+const getAllReservations = (userId) => {
   return new Promise((resolve, reject) => {
-    db.query('SELECT * FROM reservation', function (error, results) {
+    db.query(`SELECT * FROM reservation WHERE user_id='${userId}'`, function (error, results) {
       if (error) {
         reject(error);
       } else {
